@@ -5,11 +5,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>LiveLab 4 Demo</title>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700&display=swap" rel="stylesheet">
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  Hello world
+  <!-- Navigation bar starts here -->
+  <nav class="navbar">
+    <!-- Logo for the travel website -->
+    <div class="logo">TravelBuddy</div>
+    <!-- Navigation links (left side) -->
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Browse</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+    <!-- Right side: Login and Sign Up buttons -->
+    <div class="nav-actions">
+      <a href="login.html" class="login-btn">Log In</a>
+      <a href="#" class="signup-btn">Sign Up</a>
+    </div>
+  </nav>
+  <!-- Navigation bar ends here -->
+  
+  <!-- Hero section starts here -->
+  <section class="hero">
+    <!-- Big logo for the hero section -->
+    <div class="hero-logo">
+      <!-- You can use an emoji or a simple icon for beginners -->
+      <span role="img" aria-label="Globe" class="hero-icon">🌍</span>
+      <span class="hero-title">TravelBuddy</span>
+    </div>
+    <!-- Hero paragraph -->
+    <p class="hero-text">Discover amazing destinations and plan your next adventure with TravelBuddy. Your journey starts here!</p>
+  </section>
+  <!-- Hero section ends here -->
+
+  <!-- Tropical island image section starts here -->
+  <div class="island-image-container">
+    <!-- Simple tropical island image from Unsplash, free to use -->
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Tropical Island" class="island-image">
+  </div>
+  <!-- Tropical island image section ends here -->
+
+  <!-- Snowy place image section starts here -->
+  <div class="snow-image-container">
+    <!-- Simple snowy place image from Unsplash, free to use -->
+    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Snowy Place" class="snow-image">
+  </div>
+  <!-- Snowy place image section ends here -->
+
+  <!-- Description under both images -->
+  <div class="travel-description">
+    From tropical escapes to a wintery climate, TravelBuddy can book your perfect vacation to anywhere!
+  </div>
+
+  <!-- Destinations section starts here -->
+  <section class="destinations">
+    <h2 class="dest-title">Explore Top Destinations</h2>
+    <div class="dest-pictures">
+      <!-- Paris, France -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=400&q=80" alt="Eiffel Tower, Paris" class="dest-img">
+          <div class="dest-name">Paris, France</div>
+        </div>
+      </a>
+      <!-- Santorini, Greece -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Santorini, Greece" class="dest-img">
+          <div class="dest-name">Santorini, Greece</div>
+        </div>
+      </a>
+      <!-- Kyoto, Japan -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Kyoto, Japan" class="dest-img">
+          <div class="dest-name">Kyoto, Japan</div>
+        </div>
+      </a>
+    </div>
+  </section>
+  <!-- Destinations section ends here -->
+
   <script src="script.js"></script>
 </body>
 

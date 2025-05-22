@@ -1,0 +1,312 @@
+/* Navigation bar styles */
+body {
+  font-family: 'Quicksand', Arial, sans-serif; /* Clean and soothing font for the whole page */
+}
+
+.navbar {
+  background-color: #4fc3f7; /* Light blue background */
+  padding: 10px 20px; /* Space inside the navbar */
+  display: flex; /* Arrange items in a row */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between logo and links */
+}
+
+/* Logo styles */
+.logo {
+  font-family: 'Montserrat', Arial, sans-serif; /* Elegant font for the logo */
+  font-size: 2.2em; /* Make logo text bigger */
+  font-weight: bold; /* Make the logo text bold */
+  color: #fff; /* White text color */
+}
+
+/* Navigation links styles */
+.nav-links {
+  list-style: none; /* Remove bullet points */
+  margin: 0;
+  padding: 0;
+  display: flex; /* Arrange links in a row */
+}
+
+.nav-links li {
+  margin-left: 20px; /* Space between links */
+}
+
+.nav-links a {
+  font-family: 'Quicksand', Arial, sans-serif; /* Use the clean font for nav links */
+  text-decoration: none; /* Remove underline */
+  color: #fff; /* White text color */
+  font-size: 1.2em; /* Make nav link text bigger */
+  transition: color 0.2s; /* Smooth color change on hover */
+}
+
+.nav-links a:hover {
+  color: #01579b; /* Darker blue on hover */
+}
+
+/* Add a container for the right-side actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the login button */
+.login-btn {
+  font-family: 'Quicksand', Arial, sans-serif; /* Use the clean font for buttons */
+  color: #fff; /* White text color */
+  background: #222; /* Black background */
+  border: none;
+  padding: 8px 16px;
+  margin-right: 10px;
+  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.login-btn:hover {
+  background: #444; /* Slightly lighter black on hover */
+}
+
+/* Style for the sign up button */
+.signup-btn {
+  font-family: 'Quicksand', Arial, sans-serif; /* Use the clean font for buttons */
+  color: #fff; /* White text color */
+  background: #222; /* Black background */
+  border: none;
+  padding: 8px 16px;
+  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.signup-btn:hover {
+  background: #444; /* Slightly lighter black on hover */
+}
+
+/* Hero section styles */
+.hero {
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%); /* Soft blue gradient */
+  text-align: center;
+  padding: 60px 20px 40px 20px;
+  margin-bottom: 30px;
+  border-radius: 0 0 24px 24px;
+}
+
+.hero-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hero-icon {
+  font-size: 4em; /* Big emoji for the logo */
+  margin-bottom: 10px;
+}
+
+.hero-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2.5em;
+  font-weight: 700;
+  color: #01579b;
+  letter-spacing: 2px;
+}
+
+.hero-text {
+  font-family: 'Quicksand', Arial, sans-serif;
+  font-size: 1.3em;
+  color: #333;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Tropical island image styles */
+.island-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.island-image {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  margin-top: -20px; /* Slight overlap with hero section for style */
+}
+
+/* Snowy place image styles */
+.snow-image-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.snow-image {
+  width: 90%;
+  max-width: 600px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  margin-top: 0;
+}
+
+/* Description under images */
+.travel-description {
+  text-align: center;
+  font-family: 'Quicksand', Arial, sans-serif;
+  font-size: 1.25em;
+  color: #01579b;
+  margin: 30px auto 40px auto;
+  max-width: 700px;
+  padding: 0 16px;
+}
+
+/* Login page styles */
+.login-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+}
+
+.login-box {
+  background: #fff;
+  padding: 32px 28px 24px 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2em;
+  color: #01579b;
+  margin-bottom: 18px;
+}
+
+.login-box label {
+  display: block;
+  text-align: left;
+  margin: 12px 0 4px 0;
+  font-family: 'Quicksand', Arial, sans-serif;
+  font-size: 1em;
+  color: #333;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #b2ebf2;
+  border-radius: 6px;
+  font-size: 1em;
+  margin-bottom: 10px;
+  font-family: 'Quicksand', Arial, sans-serif;
+}
+
+.login-submit {
+  width: 100%;
+  padding: 10px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-family: 'Quicksand', Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+.login-submit:hover {
+  background: #444;
+}
+
+.login-note {
+  margin-top: 16px;
+  font-size: 0.95em;
+  color: #666;
+}
+
+.login-note a {
+  color: #01579b;
+  text-decoration: none;
+}
+.login-note a:hover {
+  text-decoration: underline;
+}
+
+/* Home button styles for login page */
+.home-btn {
+  display: inline-block;
+  margin: 24px 0 0 24px;
+  padding: 8px 18px;
+  background: #222;
+  color: #fff;
+  font-family: 'Quicksand', Arial, sans-serif;
+  font-size: 1.1em;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.home-btn:hover {
+  background: #444;
+}
+
+/* Destinations section styles */
+.destinations {
+  margin: 40px auto 60px auto;
+  text-align: center;
+}
+
+.dest-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2em;
+  color: #01579b;
+  margin-bottom: 28px;
+}
+
+.dest-pictures {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 28px;
+}
+
+.dest-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  overflow: hidden;
+  width: 260px;
+  transition: transform 0.2s;
+}
+.dest-card:hover {
+  transform: translateY(-8px) scale(1.03);
+}
+
+.dest-img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+}
+
+.dest-name {
+  font-family: 'Quicksand', Arial, sans-serif;
+  font-size: 1.15em;
+  color: #01579b;
+  padding: 14px 0 16px 0;
+  font-weight: bold;
+}
+
+.dest-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}

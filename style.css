@@ -310,3 +310,174 @@ body {
   color: inherit;
   display: block;
 }
+
+/* About page details section */
+.about-details {
+  max-width: 700px;
+  margin: 40px auto 60px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  padding: 32px 24px 24px 24px;
+  font-family: 'Quicksand', Arial, sans-serif;
+  color: #01579b;
+  text-align: center;
+}
+.about-details h2 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.7em;
+  margin-bottom: 18px;
+}
+.about-details ul {
+  list-style: disc inside;
+  text-align: left;
+  margin: 0 auto 18px auto;
+  max-width: 400px;
+  padding-left: 0;
+}
+.about-details li {
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  color: #333;
+}
+.about-details p {
+  font-size: 1.15em;
+  color: #01579b;
+  margin-top: 18px;
+}
+
+/* Search section styles */
+.search-section {
+  margin: 40px auto 30px auto;
+  text-align: center;
+}
+.search-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.4em;
+  color: #01579b;
+  margin-bottom: 12px;
+}
+.search-input {
+  padding: 10px 16px;
+  font-size: 1.1em;
+  border: 1px solid #b2ebf2;
+  border-radius: 6px;
+  width: 90%;
+  max-width: 350px;
+  margin-bottom: 18px;
+  font-family: 'Quicksand', Arial, sans-serif;
+}
+.search-result {
+  margin: 0 auto;
+  max-width: 400px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  padding: 18px 16px 16px 16px;
+  display: none;
+  text-align: center;
+}
+.search-result img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.search-result .result-title {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.2em;
+  color: #01579b;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+.search-result .result-desc {
+  font-family: 'Quicksand', Arial, sans-serif;
+  color: #333;
+  font-size: 1em;
+}
+
+/* Main themed text box for homepage */
+.main-textbox {
+  background: #f9fafc; /* very light blue/gray for a travel feel */
+  border: 2px solid #e0e7ef; /* soft border */
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  padding: 32px 20px;
+  margin: 32px auto 24px auto;
+  max-width: 650px;
+  text-align: center;
+}
+
+/* Make sure images inside the box are not too large */
+.main-textbox img {
+  max-width: 90%;
+  border-radius: 12px;
+  margin: 16px 0;
+}
+
+/* Group the main-textbox sections into a responsive grid */
+.sections-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+  margin: 32px auto 0 auto;
+  max-width: 1400px;
+}
+
+.sections-grid .main-textbox {
+  flex: 1 1 350px;
+  max-width: 500px;
+  min-width: 280px;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .sections-grid {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .sections-grid .main-textbox {
+    max-width: 100%;
+  }
+}
+
+/* Sign Up Form Styles for beginners */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+.signup-form label {
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-align: left;
+}
+.signup-form input {
+  padding: 8px 10px;
+  border: 1.5px solid #bcd0e5;
+  border-radius: 6px;
+  font-size: 1em;
+  background: #f9fafc;
+  transition: border 0.2s;
+}
+.signup-form input:focus {
+  border: 1.5px solid #4fa3e3;
+  outline: none;
+}
+.signup-form button {
+  margin-top: 12px;
+  padding: 10px 0;
+  background: #4fa3e3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.signup-form button:hover {
+  background: #357ab8;
+}

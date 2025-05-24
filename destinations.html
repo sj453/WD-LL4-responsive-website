@@ -13,13 +13,13 @@
     <div class="logo">TravelBuddy</div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="#">Browse</a></li>
       <li><a href="destinations.html">Destinations</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="login.html">Book Now</a></li>
     </ul>
     <div class="nav-actions">
       <a href="login.html" class="login-btn">Log In</a>
-      <a href="#" class="signup-btn">Sign Up</a>
+      <a href="signup.html" class="signup-btn">Sign Up</a>
     </div>
   </nav>
   <!-- Navigation bar ends here -->
@@ -31,6 +31,13 @@
       <span class="hero-title">Top Destinations</span>
     </div>
     <p class="hero-text">Find inspiration for your next adventure! Explore some of the most beautiful places around the world with TravelBuddy.</p>
+  </section>
+
+  <!-- Search feature for destinations -->
+  <section class="search-section">
+    <h2 class="search-title">Find Your Destination</h2>
+    <input type="text" id="destination-search" class="search-input" placeholder="Type a destination (e.g., Paris, Banff, Bali)...">
+    <div id="search-result" class="search-result"></div>
   </section>
 
   <!-- Destinations Gallery -->
@@ -58,11 +65,60 @@
           <div class="dest-name">Kyoto, Japan</div>
         </div>
       </a>
-      <!-- Bali, Indonesia -->
+      <!-- London, UK (now uses local image copy 4.jpeg) -->
       <a href="destinations.html" class="dest-card-link">
         <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80" alt="Bali, Indonesia" class="dest-img">
-          <div class="dest-name">Bali, Indonesia</div>
+          <img src="image copy 4.jpeg" alt="London, UK" class="dest-img">
+          <div class="dest-name">London, UK</div>
+        </div>
+      </a>
+      <!-- Cairo, Egypt (now uses local image copy 3.jpeg) -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="image copy 3.jpeg" alt="Cairo, Egypt" class="dest-img">
+          <div class="dest-name">Cairo, Egypt</div>
+        </div>
+      </a>
+      <!-- Bangkok, Thailand (now uses local image copy 2.jpeg) -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="image copy 2.jpeg" alt="Bangkok, Thailand" class="dest-img">
+          <div class="dest-name">Bangkok, Thailand</div>
+        </div>
+      </a>
+      <!-- Istanbul, Turkey -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1464013778555-8e723c2f01f8?auto=format&fit=crop&w=400&q=80" alt="Istanbul, Turkey" class="dest-img">
+          <div class="dest-name">Istanbul, Turkey</div>
+        </div>
+      </a>
+      <!-- Marrakech, Morocco -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80" alt="Marrakech, Morocco" class="dest-img">
+          <div class="dest-name">Marrakech, Morocco</div>
+        </div>
+      </a>
+      <!-- Sydney, Australia (now uses local image copy 5.jpeg) -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="image copy 5.jpeg" alt="Sydney, Australia" class="dest-img">
+          <div class="dest-name">Sydney, Australia</div>
+        </div>
+      </a>
+      <!-- Los Angeles, USA -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Los Angeles, USA" class="dest-img">
+          <div class="dest-name">Los Angeles, USA</div>
+        </div>
+      </a>
+      <!-- Dubai, UAE (now uses local image.jpeg) -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="image.jpeg" alt="Dubai, UAE" class="dest-img">
+          <div class="dest-name">Dubai, UAE</div>
         </div>
       </a>
       <!-- Rome, Italy -->
@@ -72,72 +128,76 @@
           <div class="dest-name">Rome, Italy</div>
         </div>
       </a>
-      <!-- Dubai, UAE -->
+      <!-- Cape Town, South Africa (unique image) -->
       <a href="destinations.html" class="dest-card-link">
         <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Dubai, UAE" class="dest-img">
-          <div class="dest-name">Dubai, UAE</div>
-        </div>
-      </a>
-      <!-- Sydney, Australia -->
-      <a href="destinations.html" class="dest-card-link">
-        <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=400&q=80" alt="Sydney, Australia" class="dest-img">
-          <div class="dest-name">Sydney, Australia</div>
-        </div>
-      </a>
-      <!-- New York, USA -->
-      <a href="destinations.html" class="dest-card-link">
-        <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="New York, USA" class="dest-img">
-          <div class="dest-name">New York, USA</div>
-        </div>
-      </a>
-      <!-- Rio de Janeiro, Brazil -->
-      <a href="destinations.html" class="dest-card-link">
-        <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1465156799763-2c087c332922?auto=format&fit=crop&w=400&q=80" alt="Rio de Janeiro, Brazil" class="dest-img">
-          <div class="dest-name">Rio de Janeiro, Brazil</div>
-        </div>
-      </a>
-      <!-- Buenos Aires, Argentina -->
-      <a href="destinations.html" class="dest-card-link">
-        <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=400&q=80" alt="Buenos Aires, Argentina" class="dest-img">
-          <div class="dest-name">Buenos Aires, Argentina</div>
-        </div>
-      </a>
-      <!-- Cape Town, South Africa -->
-      <a href="destinations.html" class="dest-card-link">
-        <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=400&q=80" alt="Cape Town, South Africa" class="dest-img">
+          <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=400&q=80" alt="Cape Town, South Africa" class="dest-img">
           <div class="dest-name">Cape Town, South Africa</div>
         </div>
       </a>
-      <!-- Reykjavik, Iceland (cold) -->
+      <!-- Reykjavik, Iceland (now uses local image copy.jpeg, same layout as others) -->
       <a href="destinations.html" class="dest-card-link">
         <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=400&q=80" alt="Reykjavik, Iceland" class="dest-img">
+          <img src="image copy.jpeg" alt="Reykjavik, Iceland" class="dest-img">
           <div class="dest-name">Reykjavik, Iceland</div>
         </div>
       </a>
-      <!-- Banff, Canada (cold) -->
+      <!-- Banff, Canada (unique image) -->
       <a href="destinations.html" class="dest-card-link">
         <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Banff, Canada" class="dest-img">
+          <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=400&q=80" alt="Banff, Canada" class="dest-img">
           <div class="dest-name">Banff, Canada</div>
         </div>
       </a>
-      <!-- Zermatt, Switzerland (cold) -->
+      <!-- Zermatt, Switzerland (unique image) -->
       <a href="destinations.html" class="dest-card-link">
         <div class="dest-card">
-          <img src="https://images.unsplash.com/photo-1464013778555-8e723c2f01f8?auto=format&fit=crop&w=400&q=80" alt="Zermatt, Switzerland" class="dest-img">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=400&q=80" alt="Zermatt, Switzerland" class="dest-img">
           <div class="dest-name">Zermatt, Switzerland</div>
+        </div>
+      </a>
+      <!-- Bali, Indonesia (now uses local image copy 6.jpeg) -->
+      <a href="destinations.html" class="dest-card-link">
+        <div class="dest-card">
+          <img src="image copy 6.jpeg" alt="Bali, Indonesia" class="dest-img">
+          <div class="dest-name">Bali, Indonesia</div>
         </div>
       </a>
     </div>
   </section>
 
   <script src="script.js"></script>
+  <script>
+  // Beginner-friendly search and scroll-to-destination logic
+  const searchInput = document.getElementById('destination-search');
+  const searchResult = document.getElementById('search-result');
+
+  searchInput.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      const query = searchInput.value.trim().toLowerCase();
+      let found = false;
+      // Get all destination cards
+      const cards = document.querySelectorAll('.dest-card');
+      cards.forEach(card => {
+        const name = card.querySelector('.dest-name').textContent.toLowerCase();
+        if (name.includes(query) && query.length > 0) {
+          found = true;
+          // Scroll to the card smoothly
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Highlight the card for a moment
+          card.style.boxShadow = '0 0 0 4px #4fa3e3';
+          setTimeout(() => { card.style.boxShadow = ''; }, 1500);
+        }
+      });
+      if (!found) {
+        searchResult.textContent = 'Destination not found.';
+        searchResult.style.color = 'red';
+      } else {
+        searchResult.textContent = '';
+      }
+    }
+  });
+  </script>
 </body>
 </html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Accounts - TravelBuddy Admin</title>
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <!-- Navigation bar starts here -->
+  <nav class="navbar">
+    <div class="logo">TravelBuddy</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="destinations.html">Destinations</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="login.html">Book Now</a></li>
+      <!-- Only show Accounts link if admin is logged in -->
+      <li id="accounts-link" style="display:none;"><a href="accounts.html">Accounts</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="login-btn">Log In</a>
+      <a href="signup.html" class="signup-btn">Sign Up</a>
+    </div>
+  </nav>
+  <!-- Navigation bar ends here -->
+
+  <div class="main-textbox" style="max-width: 700px; margin: 40px auto;">
+    <h2>Accounts</h2>
+    <div id="accounts-list">
+      <!-- Accounts will be listed here by JavaScript -->
+    </div>
+  </div>
+
+  <script>
+    // Only allow admin to view this page
+    var users = JSON.parse(localStorage.getItem('travelbuddyUsers') || '[]');
+    var currentUser = localStorage.getItem('travelbuddyCurrentUser');
+    var isAdmin = false;
+    var adminEmail = "sabahmikhail@icloud.com";
+    var currentUserEmail = "";
+    // Find the current user's email by matching the first name (case-insensitive for 'Sabah')
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].firstName && users[i].firstName.toLowerCase() === 'sabah') {
+        currentUserEmail = users[i].email;
+        if (users[i].isAdmin && users[i].email.toLowerCase() === adminEmail) {
+          isAdmin = true;
+        }
+        break;
+      }
+    }
+    // Show Accounts link only for admin
+    if (isAdmin) {
+      document.getElementById('accounts-link').style.display = '';
+    }
+    if (!isAdmin) {
+      document.body.innerHTML = '<div style="text-align:center;margin-top:60px;font-size:1.3em;">Access denied. This page is for admin only.</div>';
+    } else {
+      // Show ALL accounts (removed the even index filter)
+      var html = '<ul style="list-style:none;padding:0;">';
+      users.forEach(function(u) {
+        html += '<li style="margin:10px 0;padding:10px 0;border-bottom:1px solid #e0e0e0;">'
+          + '<b>' + u.firstName + ' ' + u.lastName + '</b> | Email: ' + u.email
+          + ' | Age: ' + u.age + ' | Phone: ' + u.phone
+          + (u.isAdmin ? ' <span style="color:#ff9800;font-weight:bold;">[Admin]</span>' : '')
+          // Add a delete button for every account
+          + ' <button onclick="deleteAccount(\'' + u.email + '\')" style="margin-left:10px;background:#e57373;color:white;border:none;padding:4px 10px;border-radius:4px;cursor:pointer;">Delete</button>'
+          + '</li>';
+      });
+      html += '</ul>';
+      document.getElementById('accounts-list').innerHTML = html;
+      // Add deleteAccount function for admin to delete any account
+      window.deleteAccount = function(email) {
+        if (confirm('Are you sure you want to delete this account?')) {
+          var users = JSON.parse(localStorage.getItem('travelbuddyUsers') || '[]');
+          // Remove the user with the matching email
+          users = users.filter(function(u) { return u.email !== email; });
+          localStorage.setItem('travelbuddyUsers', JSON.stringify(users));
+          // Reload the page to update the list
+          location.reload();
+        }
+      }
+    }
+  </script>
+
+  <!-- Add this script just before the closing </body> tag -->
+  <script>
+    // Get the current user's email from localStorage
+    var users = JSON.parse(localStorage.getItem('travelbuddyUsers') || '[]');
+    var currentUser = localStorage.getItem('travelbuddyCurrentUser');
+    var isAdmin = false;
+    var adminEmail = "sabahmikhail@icloud.com";
+
+    // Find the current user's email by matching the first name (beginner-friendly, but not secure)
+    var currentUserEmail = "";
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].firstName === currentUser) {
+        currentUserEmail = users[i].email;
+        if (users[i].isAdmin && users[i].email.toLowerCase() === adminEmail) {
+          isAdmin = true;
+        }
+        break;
+      }
+    }
+
+    // Show accounts page if admin, otherwise show access denied
+    if (isAdmin) {
+      // Show the accounts table or content (you can add your accounts table here)
+      // Example:
+      // document.getElementById('accounts-content').style.display = 'block';
+    } else {
+      // Hide all content and show access denied
+      document.body.innerHTML = '<div style="text-align:center; color:red; margin:30px; font-size:1.5em;">Access Denied</div>';
+    }
+  </script>
+
+  <!-- Add this section after the accounts list div -->
+  <div class="main-textbox" style="max-width: 700px; margin: 40px auto;">
+    <h2>Manage Destinations</h2>
+    <!-- Simple form to add new destinations -->
+    <form id="destination-form" style="margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+      <h3>Add New Destination</h3>
+      <div style="margin: 10px 0;">
+        <label for="destName">Destination Name:</label><br>
+        <input type="text" id="destName" required style="width: 100%; padding: 8px; margin: 5px 0;">
+      </div>
+      <div style="margin: 10px 0;">
+        <label for="destImage">Image URL:</label><br>
+        <input type="url" id="destImage" required style="width: 100%; padding: 8px; margin: 5px 0;">
+      </div>
+      <button type="submit" style="background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+        Add Destination
+      </button>
+    </form>
+
+    <!-- List of current destinations -->
+    <div id="destinations-list">
+      <!-- Destinations will be listed here -->
+    </div>
+  </div>
+
+  <!-- Add this script before the closing body tag -->
+  <script>
+  // Get destinations from localStorage or create empty array
+  var destinations = JSON.parse(localStorage.getItem('travelbuddyDestinations') || '[]');
+
+  // Function to display all destinations
+  function showDestinations() {
+    var html = '<h3>Current Destinations</h3><ul style="list-style: none; padding: 0;">';
+    
+    destinations.forEach(function(dest, index) {
+      html += `
+        <li style="margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+          <img src="${dest.image}" alt="${dest.name}" style="max-width: 200px; height: auto;"><br>
+          <strong>${dest.name}</strong>
+          <button onclick="deleteDestination(${index})" style="margin-left: 10px; background: #e57373; color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer;">
+            Delete
+          </button>
+        </li>
+      `;
+    });
+    
+    html += '</ul>';
+    document.getElementById('destinations-list').innerHTML = html;
+  }
+
+  // Function to add new destination
+  document.getElementById('destination-form').onsubmit = function(e) {
+    e.preventDefault();
+    
+    var newDest = {
+      name: document.getElementById('destName').value,
+      image: document.getElementById('destImage').value
+    };
+    
+    destinations.push(newDest);
+    localStorage.setItem('travelbuddyDestinations', JSON.stringify(destinations));
+    
+    // Reset form and refresh list
+    this.reset();
+    showDestinations();
+  };
+
+  // Function to delete destination
+  window.deleteDestination = function(index) {
+    if (confirm('Are you sure you want to delete this destination?')) {
+      destinations.splice(index, 1);
+      localStorage.setItem('travelbuddyDestinations', JSON.stringify(destinations));
+      showDestinations();
+    }
+  };
+
+  // Show destinations when page loads
+  if (isAdmin) {
+    showDestinations();
+  }
+  </script>
+</body>
+</html>

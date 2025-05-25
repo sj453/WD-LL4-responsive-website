@@ -16,6 +16,7 @@
       <li><a href="destinations.html">Destinations</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="login.html">Book Now</a></li>
+      <li><a href="accounts.html">Accounts</a></li>
     </ul>
     <div class="nav-actions">
       <a href="login.html" class="login-btn">Log In</a>
@@ -43,11 +44,75 @@
       <!-- Phone Number -->
       <label for="phone">Phone Number</label>
       <input type="tel" id="phone" name="phone" required>
+      <!-- Password -->
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+      <!-- Confirm Password -->
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" id="confirmPassword" name="confirmPassword" required>
       <!-- Submit Button -->
       <button type="submit">Sign Up</button>
     </form>
   </div>
   <!-- Sign Up Form Section ends here -->
+
+  <script>
+    // Beginner-friendly sign up form handler with localStorage and redirect
+    document.querySelector('.signup-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent page reload
+      // Get form values
+      const firstName = document.getElementById('firstName').value;
+      const lastName = document.getElementById('lastName').value;
+      const age = document.getElementById('age').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      // Password match check
+      if (password !== confirmPassword) {
+        alert('Passwords do not match. Please try again.');
+        return;
+      }
+      // Save info to localStorage (as an array of users)
+      let users = JSON.parse(localStorage.getItem('travelbuddyUsers') || '[]');
+      
+      // Check if this is the admin account (Sabah)
+      let isAdmin = false;
+      if (firstName.toLowerCase() === 'sabah' && lastName.toLowerCase() === 'mikhail' && 
+          email.toLowerCase() === 'sabahmikhail@icloud.com') {
+        isAdmin = true;
+      }
+      
+      // Create the user object
+      const user = {
+        firstName,
+        lastName,
+        age,
+        email: email.toLowerCase(),
+        phone,
+        password,
+        isAdmin
+      };
+      
+      // Add the user to the array
+      users.push(user);
+      localStorage.setItem('travelbuddyUsers', JSON.stringify(users));
+      
+      // Save current user info
+      localStorage.setItem('travelbuddyCurrentUser', firstName);
+      localStorage.setItem('travelbuddyCurrentUserEmail', email.toLowerCase());
+      
+      // Set admin status if applicable
+      if (isAdmin) {
+        localStorage.setItem('travelbuddyIsAdmin', 'true');
+      } else {
+        localStorage.removeItem('travelbuddyIsAdmin');
+      }
+      
+      // Redirect to home page
+      window.location.href = 'index.html';
+    });
+  </script>
 
 </body>
 </html>

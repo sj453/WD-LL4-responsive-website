@@ -32,7 +32,46 @@
       <li><a href="destinations.html">Destinations</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="login.html">Book Now</a></li>
+      <li><a href="accounts.html">Accounts</a></li>
     </ul>
   </nav>
+  <script>
+    // Beginner-friendly login form handler
+    document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // Get login values
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      // Get users from localStorage
+      let users = JSON.parse(localStorage.getItem('travelbuddyUsers') || '[]');
+      // Find user with matching email and password
+      // For admin, allow both the entered password and 'Admin123'
+      let user = users.find(u => u.email === email && u.password === password);
+      // If not found, and email is admin, try 'Admin123' as password
+      if (!user && email.toLowerCase() === 'sabahmikhail@icloud.com' && password === 'Admin123') {
+        user = users.find(u => u.email === email && u.password === 'Admin123');
+      }
+      if (user) {
+        // Save current user for greeting
+        localStorage.setItem('travelbuddyCurrentUser', user.firstName);
+        localStorage.setItem('travelbuddyCurrentUserEmail', user.email);
+        if (user.isAdmin) {
+          localStorage.setItem('travelbuddyIsAdmin', 'true');
+        } else {
+          localStorage.removeItem('travelbuddyIsAdmin');
+        }
+        // Redirect to home page
+        window.location.href = 'index.html';
+      } else {
+        // Check if email exists for a more specific error
+        let emailExists = users.some(u => u.email === email);
+        if (emailExists) {
+          alert('Incorrect password. Please try again.');
+        } else {
+          alert('Incorrect email or password. Please try again.');
+        }
+      }
+    });
+  </script>
 </body>
 </html>

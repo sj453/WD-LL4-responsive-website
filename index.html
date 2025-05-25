@@ -12,17 +12,14 @@
 <body>
   <!-- Navigation bar starts here -->
   <nav class="navbar">
-    <!-- Logo for the travel website -->
     <div class="logo">TravelBuddy</div>
-    <!-- Navigation links (left side) -->
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="destinations.html">Destinations</a></li>
       <li><a href="about.html">About</a></li>
-      <!-- Book Now now links to login.html for beginners -->
       <li><a href="login.html">Book Now</a></li>
+      <li id="accounts-link" style="display:none;"><a href="accounts.html">Accounts</a></li>
     </ul>
-    <!-- Right side: Login and Sign Up buttons -->
     <div class="nav-actions">
       <a href="login.html" class="login-btn">Log In</a>
       <a href="signup.html" class="signup-btn">Sign Up</a>
@@ -119,6 +116,99 @@
   </section>
   <!-- Destinations section ends here -->
 
+  <script>
+    // Show a custom greeting and admin controls if user is admin
+    window.addEventListener('DOMContentLoaded', function() {
+      var firstName = localStorage.getItem('travelbuddyCurrentUser');
+      var isAdmin = localStorage.getItem('travelbuddyIsAdmin') === 'true';
+      var currentUserEmail = localStorage.getItem('travelbuddyCurrentUserEmail');
+      // Show Accounts link for admin (Sabah Mikhail)
+      var accountsLink = document.getElementById('accounts-link');
+      if (accountsLink && currentUserEmail && currentUserEmail.toLowerCase() === 'sabahmikhail@icloud.com') {
+        accountsLink.style.display = 'inline-block';
+      }
+      if (firstName) {
+        // Create a greeting element
+        var greeting = document.createElement('div');
+        greeting.textContent = 'Hi, ' + firstName + '!';
+        greeting.className = 'custom-greeting';
+        var mainTextbox = document.querySelector('.main-textbox');
+        if (mainTextbox) {
+          mainTextbox.parentNode.insertBefore(greeting, mainTextbox);
+        }
+        // If admin, show admin controls
+        if (isAdmin) {
+          var adminBox = document.createElement('div');
+          adminBox.className = 'admin-controls';
+          adminBox.innerHTML = '<h3>Admin Controls</h3>' +
+            '<button id="viewUsersBtn">View All Accounts</button>' +
+            '<div id="usersList" style="margin-top:10px;"></div>';
+          greeting.parentNode.insertBefore(adminBox, greeting.nextSibling);
+          document.getElementById('viewUsersBtn').onclick = function() {
+            var users = JSON.parse(localStorage.getItem('travelbuddyUsers') || '[]');
+            var list = '<ul>' + users.map(function(u, i) {
+              return '<li>' + u.firstName + ' ' + u.lastName + ' (' + u.email + ')' + (u.isAdmin ? ' <b>[Admin]</b>' : '') +
+                ' <button onclick="deleteUser(' + i + ')">Delete</button>' + '</li>';
+            }).join('') + '</ul>';
+            document.getElementById('usersList').innerHTML = list;
+          };
+          // Add deleteUser function to window for button access
+          window.deleteUser = function(idx) {
+            var users = JSON.parse(localStorage.getItem('travelbuddyUsers') || '[]');
+            if (users[idx] && users[idx].isAdmin) {
+              alert('Cannot delete the admin account!');
+              return;
+            }
+            users.splice(idx, 1);
+            localStorage.setItem('travelbuddyUsers', JSON.stringify(users));
+            document.getElementById('viewUsersBtn').click();
+          };
+        }
+      }
+    });
+  </script>
+  <style>
+    .custom-greeting {
+      background: #e0f7fa;
+      color: #00796b;
+      font-size: 1.3em;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 12px;
+      margin: 24px auto 12px auto;
+      padding: 16px 0;
+      max-width: 400px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .admin-controls {
+      background: #fffbe7;
+      border: 2px solid #ffe082;
+      border-radius: 10px;
+      margin: 16px auto 12px auto;
+      padding: 16px 18px;
+      max-width: 420px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+    .admin-controls button {
+      margin: 6px 0;
+      padding: 6px 16px;
+      background: #ffb300;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .admin-controls ul {
+      list-style: none;
+      padding: 0;
+    }
+    .admin-controls li {
+      margin: 6px 0;
+      font-size: 1em;
+    }
+  </style>
   <script src="script.js"></script>
 </body>
 

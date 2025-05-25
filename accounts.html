@@ -57,16 +57,18 @@
     if (!isAdmin) {
       document.body.innerHTML = '<div style="text-align:center;margin-top:60px;font-size:1.3em;">Access denied. This page is for admin only.</div>';
     } else {
-      // Show ALL accounts (removed the even index filter)
+      // Show all accounts, but only display every other account (even index)
       var html = '<ul style="list-style:none;padding:0;">';
-      users.forEach(function(u) {
-        html += '<li style="margin:10px 0;padding:10px 0;border-bottom:1px solid #e0e0e0;">'
-          + '<b>' + u.firstName + ' ' + u.lastName + '</b> | Email: ' + u.email
-          + ' | Age: ' + u.age + ' | Phone: ' + u.phone
-          + (u.isAdmin ? ' <span style="color:#ff9800;font-weight:bold;">[Admin]</span>' : '')
-          // Add a delete button for every account
-          + ' <button onclick="deleteAccount(\'' + u.email + '\')" style="margin-left:10px;background:#e57373;color:white;border:none;padding:4px 10px;border-radius:4px;cursor:pointer;">Delete</button>'
-          + '</li>';
+      users.forEach(function(u, i) {
+        if (i % 2 === 0) { // Show every other account (even index)
+          html += '<li style="margin:10px 0;padding:10px 0;border-bottom:1px solid #e0e0e0;">'
+            + '<b>' + u.firstName + ' ' + u.lastName + '</b> | Email: ' + u.email
+            + ' | Age: ' + u.age + ' | Phone: ' + u.phone
+            + (u.isAdmin ? ' <span style="color:#ff9800;font-weight:bold;">[Admin]</span>' : '')
+            // Add a delete button for every account
+            + ' <button onclick="deleteAccount(\'' + u.email + '\')" style="margin-left:10px;background:#e57373;color:white;border:none;padding:4px 10px;border-radius:4px;cursor:pointer;">Delete</button>'
+            + '</li>';
+        }
       });
       html += '</ul>';
       document.getElementById('accounts-list').innerHTML = html;
@@ -113,88 +115,6 @@
       // Hide all content and show access denied
       document.body.innerHTML = '<div style="text-align:center; color:red; margin:30px; font-size:1.5em;">Access Denied</div>';
     }
-  </script>
-
-  <!-- Add this section after the accounts list div -->
-  <div class="main-textbox" style="max-width: 700px; margin: 40px auto;">
-    <h2>Manage Destinations</h2>
-    <!-- Simple form to add new destinations -->
-    <form id="destination-form" style="margin: 20px 0; padding: 15px; background: #f5f5f5; border-radius: 8px;">
-      <h3>Add New Destination</h3>
-      <div style="margin: 10px 0;">
-        <label for="destName">Destination Name:</label><br>
-        <input type="text" id="destName" required style="width: 100%; padding: 8px; margin: 5px 0;">
-      </div>
-      <div style="margin: 10px 0;">
-        <label for="destImage">Image URL:</label><br>
-        <input type="url" id="destImage" required style="width: 100%; padding: 8px; margin: 5px 0;">
-      </div>
-      <button type="submit" style="background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
-        Add Destination
-      </button>
-    </form>
-
-    <!-- List of current destinations -->
-    <div id="destinations-list">
-      <!-- Destinations will be listed here -->
-    </div>
-  </div>
-
-  <!-- Add this script before the closing body tag -->
-  <script>
-  // Get destinations from localStorage or create empty array
-  var destinations = JSON.parse(localStorage.getItem('travelbuddyDestinations') || '[]');
-
-  // Function to display all destinations
-  function showDestinations() {
-    var html = '<h3>Current Destinations</h3><ul style="list-style: none; padding: 0;">';
-    
-    destinations.forEach(function(dest, index) {
-      html += `
-        <li style="margin: 15px 0; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
-          <img src="${dest.image}" alt="${dest.name}" style="max-width: 200px; height: auto;"><br>
-          <strong>${dest.name}</strong>
-          <button onclick="deleteDestination(${index})" style="margin-left: 10px; background: #e57373; color: white; border: none; padding: 4px 10px; border-radius: 4px; cursor: pointer;">
-            Delete
-          </button>
-        </li>
-      `;
-    });
-    
-    html += '</ul>';
-    document.getElementById('destinations-list').innerHTML = html;
-  }
-
-  // Function to add new destination
-  document.getElementById('destination-form').onsubmit = function(e) {
-    e.preventDefault();
-    
-    var newDest = {
-      name: document.getElementById('destName').value,
-      image: document.getElementById('destImage').value
-    };
-    
-    destinations.push(newDest);
-    localStorage.setItem('travelbuddyDestinations', JSON.stringify(destinations));
-    
-    // Reset form and refresh list
-    this.reset();
-    showDestinations();
-  };
-
-  // Function to delete destination
-  window.deleteDestination = function(index) {
-    if (confirm('Are you sure you want to delete this destination?')) {
-      destinations.splice(index, 1);
-      localStorage.setItem('travelbuddyDestinations', JSON.stringify(destinations));
-      showDestinations();
-    }
-  };
-
-  // Show destinations when page loads
-  if (isAdmin) {
-    showDestinations();
-  }
   </script>
 </body>
 </html>
